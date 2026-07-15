@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background:
+    radial-gradient(1200px 480px at 10% -10%, rgba(0, 179, 134, 0.12), transparent 55%),
+    radial-gradient(900px 420px at 95% 10%, rgba(56, 189, 248, 0.08), transparent 60%),
+    linear-gradient(180deg, #f6faf8 0%, #f7f8fa 40%, #f4f6f8 100%);
+  color: #1a1f36;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --primary: #00b386;
+  --primary-dark: #00a37a;
+  --primary-light: #e8f8f3;
+  --surface: #ffffff;
+  --surface-border: #e7edf2;
+  --surface-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+  --text-main: #1a1f36;
+  --text-muted: #6f7d91;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  .text-primary { color: var(--primary); }
+  .bg-primary { background-color: var(--primary); }
+  .border-primary { border-color: var(--primary); }
+  .bg-primary-light { background-color: var(--primary-light); }
+
+  .elevated-panel {
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--surface-shadow);
+    border-radius: 16px;
+  }
+
+  .page-fade-in {
+    animation: fadeInUp 420ms ease-out;
+  }
+
+  /* Smooth animation for price flashes */
+  .price-up { animation: flashGreen 0.6s ease; }
+  .price-down { animation: flashRed 0.6s ease; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flashGreen {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgba(0, 179, 134, 0.12); }
+}
+
+@keyframes flashRed {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: rgba(239, 68, 68, 0.1); }
+}
